@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">WhereTo</string>
+    <string name="empty_state_text">You still haven’t\n<b><i>been</i></b>\nanywhere</string>
 </resources>
