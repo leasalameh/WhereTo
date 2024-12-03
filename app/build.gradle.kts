@@ -68,4 +68,8 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+    implementation ("com.mikepenz:iconics-core:5.3.2")
+    implementation ("com.mikepenz:fontawesome-typeface:5.9.0.0-kotlin@aar")
+    implementation ("androidx.constraintlayout:constraintlayout:2.0.4")
+
 }
