@@ -6,4 +6,10 @@
     <color name="secondary_text">#666666</color>
     <color name="gray">#CCCCCC</color>
     <color name="white">#FFFFFF</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF000000</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FFD700</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="custom_yellow">#FFD700</color>
 </resources>
