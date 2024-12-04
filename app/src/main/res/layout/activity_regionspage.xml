@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:drawablePadding="8dp"
+        android:drawableStart="@drawable/back_arrow"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/change_country_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/back_button"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="Change Country"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@android:color/black"
+        android:background="@android:color/transparent" />
+
+    <ImageView
+        android:id="@+id/imageViewHeader"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/change_country_label"
+        android:scaleType="centerCrop"
+        android:src="@drawable/header_image" />
+
+    <TextView
+        android:id="@+id/region_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageViewHeader"
+        android:text="Region"
+        android:padding="16dp"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/search_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/region_label"
+        android:hint="Search Countries"
+        android:visibility="gone"
+        android:inputType="text"
+        android:drawableLeft="@drawable/ic_search"
+        android:drawablePadding="10dp"
+        android:padding="12dp"
+        android:background="@drawable/search_background" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_edit_text" />
+
+</RelativeLayout>
