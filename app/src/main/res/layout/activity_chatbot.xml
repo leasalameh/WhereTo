@@ -1,0 +1,123 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF"> <!-- Ensure white background for the entire layout -->
+
+    <!-- Chat Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="#FFFFFF">
+
+        <!-- Back Button -->
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/back_arrow"
+            android:contentDescription="Back Button"
+            android:layout_marginEnd="16dp" />
+
+        <!-- Chatbot Name -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chat"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:fontFamily="sans-serif-medium"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <!-- Message Body (Chat Scroll Area) -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="0dp"
+        android:background="#FFFFFF"> <!-- Ensure background matches -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/message_container"
+        android:spacing="2dp"
+        android:padding="0dp">
+
+    <!-- Example of an AI Message -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="start"
+        android:padding="8dp"> <!-- Reduced padding -->
+
+    <!-- AI Message Text -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WhereTo today?"
+        android:padding="10dp"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:gravity="start"
+        android:layout_marginEnd="8dp" />
+</LinearLayout>
+
+    <!-- Example of a User Message -->
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="end"
+    android:padding="8dp">
+
+    <!-- User Message Text -->
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text=""
+    android:padding="10dp"
+    android:textColor="#FFFFFF"
+    android:textSize="14sp"
+    android:layout_marginEnd="8dp" />
+    </LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
+
+    <!-- Message Input Area -->
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:background="#FFFFFF"
+android:padding="16dp"
+android:weightSum="1">
+
+<EditText
+    android:id="@+id/message_input"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:hint="Type a message..."
+    android:padding="12dp"
+    android:textSize="14sp"
+    android:layout_marginEnd="8dp"
+    android:background="@drawable/rounded_edittext_border"
+    android:inputType="text" />
+
+<ImageButton
+    android:id="@+id/send_button"
+    android:layout_width="24dp"
+    android:layout_height="30dp"
+    android:background="?attr/selectableItemBackgroundBorderless"
+    android:src="@drawable/ic_send"
+    android:layout_marginTop="8dp" />
+</LinearLayout>
+
+    </LinearLayout>

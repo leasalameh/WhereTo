@@ -1,0 +1,860 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <!-- ScrollView containing all your content -->
+  <ScrollView
+      android:id="@+id/contentScrollView"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_above="@+id/bottom_navigation"
+      android:padding="16dp"
+      android:background="@android:color/white"
+      android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+      <!-- Header Section -->
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="16dp">
+
+        <!-- Chat Icon with Text -->
+        <LinearLayout
+            android:id="@+id/chat_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/chat_button"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="75dp"
+            android:layout_marginBottom="5dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_chatbot"
+            android:tint="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/chatBot"
+            app:layout_constraintEnd_toStartOf="@+id/whereToText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+             />
+
+        <TextView
+            android:id="@+id/chatBot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="50dp"
+            android:gravity="center"
+            android:text="ChatBot"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/chat_layout"
+            app:layout_constraintHorizontal_bias="0.151"
+            app:layout_constraintStart_toStartOf="@+id/chat_button"
+            app:layout_constraintTop_toBottomOf="@+id/chat_button"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <!-- Change Icon with Text -->
+        <LinearLayout
+            android:id="@+id/change_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+          <ImageButton
+              android:id="@+id/change_button"
+              android:layout_width="24dp"
+              android:layout_height="24dp"
+              android:background="?attr/selectableItemBackgroundBorderless"
+              android:src="@drawable/ic_change"
+              android:tint="@color/black"
+              app:tint="@color/black" />
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:text="Change"
+              android:textSize="12sp"
+              android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/whereToText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="53dp"
+            android:layout_marginTop="-13dp"
+            android:layout_marginEnd="53dp"
+            android:layout_marginBottom="23dp"
+            android:gravity="center"
+            android:text="WhereTo"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/lebanonText"
+            app:layout_constraintEnd_toStartOf="@+id/change_layout"
+            app:layout_constraintStart_toEndOf="@+id/chatBot"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/lebanonText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="LEBANON"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:tint="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/whereToText"
+            app:layout_constraintHorizontal_bias="0.571"
+            app:layout_constraintStart_toStartOf="@+id/whereToText"
+            app:layout_constraintTop_toBottomOf="@+id/change_layout"
+            app:layout_constraintVertical_bias="0.56" />
+
+
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Trending in Lebanon"
+          android:textColor="@color/black"
+          android:textSize="20sp"
+          android:textStyle="bold"
+          android:layout_marginTop="8dp" />
+
+      <HorizontalScrollView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+          <!-- Item: Joe and the Juice -->
+          <LinearLayout
+              android:layout_width="200dp"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:layout_marginEnd="8dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                android:layout_marginBottom="8dp"
+                android:elevation="4dp">
+
+              <ImageView
+                  android:layout_width="match_parent"
+                  android:layout_height="120dp"
+                  android:scaleType="centerCrop"
+                  android:src="@drawable/joe_and_juice" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Joe and the Juice"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Downtown, Beirut"
+                android:textSize="12sp"
+                android:layout_marginTop="2dp" />
+          </LinearLayout>
+
+          <!-- Item: Em Sherif -->
+          <LinearLayout
+              android:layout_width="200dp"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:layout_marginEnd="8dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                android:layout_marginBottom="8dp"
+                android:elevation="4dp">
+
+              <ImageView
+                  android:layout_width="match_parent"
+                  android:layout_height="120dp"
+                  android:scaleType="centerCrop"
+                  android:src="@drawable/em_sherif" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Em Sherif"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Downtown, Beirut"
+                android:textSize="12sp"
+                android:layout_marginTop="2dp" />
+          </LinearLayout>
+
+          <!-- Item: The Bros -->
+          <LinearLayout
+              android:layout_width="200dp"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:layout_marginEnd="8dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                android:layout_marginBottom="8dp"
+                android:elevation="4dp">
+
+              <ImageView
+                  android:layout_width="match_parent"
+                  android:layout_height="120dp"
+                  android:scaleType="centerCrop"
+                  android:src="@drawable/the_bros" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="The Bros"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mar Mikhael"
+                android:textSize="12sp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="30dp" />
+          </LinearLayout>
+        </LinearLayout>
+      </HorizontalScrollView>
+
+
+
+
+      <!-- Taste of italia:  -->
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Taste of Italia;)"
+          android:textColor="@color/black"
+          android:textSize="20sp"
+          android:textStyle="bold"
+          android:tint="@color/black"
+          android:layout_marginTop="8dp" />
+
+      <HorizontalScrollView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+          <!-- Item: tom & mutz -->
+          <LinearLayout
+              android:layout_width="200dp"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:layout_marginEnd="8dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                android:layout_marginBottom="8dp"
+                android:elevation="4dp">
+
+              <ImageView
+                  android:layout_width="match_parent"
+                  android:layout_height="120dp"
+                  android:scaleType="centerCrop"
+                  android:src="@drawable/tom_and_mutz" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tom&amp;Mutz"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mar Mikhael, Beirut"
+                android:textSize="12sp"
+                android:layout_marginTop="2dp" />
+          </LinearLayout>
+
+          <!-- Item: Appetito -->
+          <LinearLayout
+              android:layout_width="200dp"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:layout_marginEnd="8dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                android:layout_marginBottom="8dp"
+                android:elevation="4dp">
+
+              <ImageView
+                  android:layout_width="match_parent"
+                  android:layout_height="120dp"
+                  android:scaleType="centerCrop"
+                  android:src="@drawable/appetito" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Appetito"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hamra"
+                android:textSize="12sp"
+                android:layout_marginTop="2dp" />
+          </LinearLayout>
+
+          <!-- Item: Alegna -->
+          <LinearLayout
+              android:layout_width="200dp"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:layout_marginEnd="8dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                android:layout_marginBottom="8dp"
+                android:elevation="4dp">
+
+              <ImageView
+                  android:layout_width="match_parent"
+                  android:layout_height="120dp"
+                  android:scaleType="centerCrop"
+                  android:src="@drawable/wheredoyouwannago" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alegna"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Beirut"
+                android:textSize="12sp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="30dp"/>
+          </LinearLayout>
+        </LinearLayout>
+      </HorizontalScrollView>
+
+
+
+
+
+      <!-- Nights of Beats -->
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Nights of Beats"
+          android:textColor="@color/black"
+          android:textSize="20sp"
+          android:textStyle="bold"
+          android:tint="@color/black"
+          android:layout_marginTop="8dp" />
+
+      <HorizontalScrollView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+          <!-- Pierre and Friends -->
+          <LinearLayout
+              android:layout_width="200dp"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:layout_marginEnd="8dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                android:layout_marginBottom="8dp"
+                android:elevation="4dp">
+
+              <ImageView
+                  android:layout_width="match_parent"
+                  android:layout_height="120dp"
+                  android:scaleType="centerCrop"
+                  android:src="@drawable/pierre_and_friends" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pierre and Friends"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Batroun"
+                android:textSize="12sp"
+                android:layout_marginTop="2dp" />
+          </LinearLayout>
+
+          <!-- SKYBAR -->
+          <LinearLayout
+              android:layout_width="200dp"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:layout_marginEnd="8dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                android:layout_marginBottom="8dp"
+                android:elevation="4dp">
+
+              <ImageView
+                  android:layout_width="match_parent"
+                  android:layout_height="120dp"
+                  android:scaleType="centerCrop"
+                  android:src="@drawable/skybar" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SKYBAR"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Downtown, Beirut"
+                android:textSize="12sp"
+                android:layout_marginTop="2dp" />
+          </LinearLayout>
+
+          <!-- Item: SPINE -->
+          <LinearLayout
+              android:layout_width="200dp"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:layout_marginEnd="8dp">
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                android:layout_marginBottom="8dp"
+                android:elevation="4dp">
+
+              <ImageView
+                  android:layout_width="match_parent"
+                  android:layout_height="120dp"
+                  android:scaleType="centerCrop"
+                  android:src="@drawable/spine" />
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SPINE"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dbayeh"
+                android:textSize="12sp"
+                android:layout_marginTop="2dp" />
+          </LinearLayout>
+
+        </LinearLayout>
+      </HorizontalScrollView>
+
+
+
+
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Shawarma is Always an Option"
+          android:textColor="@color/black"
+          android:textSize="20sp"
+          android:textStyle="bold"
+          android:tint="@color/black"
+          android:layout_marginTop="8dp" />
+
+      <HorizontalScrollView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+          <!-- Item: Barbar -->
+          <LinearLayout
+              android:layout_width="200dp"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:layout_marginEnd="8dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                android:layout_marginBottom="8dp"
+                android:elevation="4dp">
+
+              <ImageView
+                  android:layout_width="match_parent"
+                  android:layout_height="120dp"
+                  android:scaleType="centerCrop"
+                  android:src="@drawable/barbar" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Barbar"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hamra, Beirut"
+                android:textSize="12sp"
+                android:layout_marginTop="2dp" />
+          </LinearLayout>
+
+          <!-- Item: Shawarma Joseph -->
+          <LinearLayout
+              android:layout_width="200dp"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:layout_marginEnd="8dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                android:layout_marginBottom="8dp"
+                android:elevation="4dp">
+
+              <ImageView
+                  android:layout_width="match_parent"
+                  android:layout_height="120dp"
+                  android:scaleType="centerCrop"
+                  android:src="@drawable/joseph" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shawarma Joseph"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sin el Fil, Beirut"
+                android:textSize="12sp"
+                android:layout_marginTop="2dp" />
+          </LinearLayout>
+
+          <!-- Item: Abo Sobhi -->
+          <LinearLayout
+              android:layout_width="200dp"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:layout_marginEnd="8dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                android:layout_marginBottom="8dp"
+                android:elevation="4dp">
+
+              <ImageView
+                  android:layout_width="match_parent"
+                  android:layout_height="120dp"
+                  android:scaleType="centerCrop"
+                  android:src="@drawable/abosobhi" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Abo Sobhi"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jal el Dib"
+                android:textSize="12sp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="30dp"/>
+          </LinearLayout>
+        </LinearLayout>
+      </HorizontalScrollView>
+
+
+
+
+
+      <!-- Add more sections similar to above -->
+
+    </LinearLayout>
+  </ScrollView>
+
+
+  <!-- Bottom Navigation Bar -->
+  <LinearLayout
+      android:id="@+id/bottom_navigation"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:background="#EEEEEE"
+      android:orientation="horizontal"
+      android:padding="8dp"
+      android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="4dp">
+
+
+      <ImageButton
+          android:id="@+id/home_button"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="?attr/selectableItemBackgroundBorderless"
+          android:src="@drawable/ic_home"
+          android:contentDescription="Home"
+          app:tint="@color/black" />
+
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="4dp"
+          android:text="Home"
+          android:textSize="12sp"
+          android:textColor="@color/black"
+          android:gravity="center" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="4dp">
+
+
+      <ImageButton
+          android:id="@+id/search_button"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="?attr/selectableItemBackgroundBorderless"
+          android:src="@drawable/ic_search"
+          android:contentDescription="Search"
+          app:tint="@color/black" />
+
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="4dp"
+          android:text="Search"
+          android:textSize="12sp"
+          android:textColor="@color/black"
+          android:gravity="center" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="4dp">
+
+
+      <ImageButton
+          android:id="@+id/map_button"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="?attr/selectableItemBackgroundBorderless"
+          android:src="@drawable/ic_map"
+          android:contentDescription="Map"
+          app:tint="@color/black" />
+
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="4dp"
+          android:text="Map"
+          android:textSize="12sp"
+          android:textColor="@color/black"
+          android:gravity="center" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="4dp">
+
+
+      <ImageButton
+          android:id="@+id/fav_button"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="?attr/selectableItemBackgroundBorderless"
+          android:src="@drawable/ic_fav"
+          android:contentDescription="Favorites"
+          app:tint="@color/black" />
+
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="4dp"
+          android:text="Favorites"
+          android:textSize="12sp"
+          android:textColor="@color/black"
+          android:gravity="center" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="4dp">
+
+
+      <ImageButton
+          android:id="@+id/profile_button"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="?attr/selectableItemBackgroundBorderless"
+          android:src="@drawable/ic_profile2"
+          android:contentDescription="Profile"
+          app:tint="@color/black" />
+
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="4dp"
+          android:text="Profile"
+          android:textSize="12sp"
+          android:textColor="@color/black"
+          android:gravity="center" />
+
+    </LinearLayout>
+
+  </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- AI Icon Layer (on the left) -->
+    <item
+        android:drawable="@drawable/ai"
+        android:right="12dp"
+        android:left="12dp" />
+
+    <!-- Bubble Background Layer -->
+    <item
+        android:drawable="@drawable/rounded_left_bubble" />
+
+</layer-list>
