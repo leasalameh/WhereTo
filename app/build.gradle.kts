@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")  // Make sure this is here to link Firebase
 }
 
 android {
@@ -29,6 +30,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -36,12 +38,16 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
     buildFeatures {
         compose = true
+        viewBinding = true // Enable View Binding here
     }
+
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -50,7 +56,6 @@ android {
 }
 
 dependencies {
-
     implementation("androidx.core:core-ktx:1.15.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
     implementation("androidx.activity:activity-compose:1.9.3")
@@ -68,8 +73,10 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
-    implementation ("com.mikepenz:iconics-core:5.3.2")
-    implementation ("com.mikepenz:fontawesome-typeface:5.9.0.0-kotlin@aar")
-    implementation ("androidx.constraintlayout:constraintlayout:2.0.4")
-
+    implementation("com.mikepenz:iconics-core:5.3.2")
+    implementation("com.mikepenz:fontawesome-typeface:5.9.0.0-kotlin@aar")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
+    implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth-ktx")
 }
