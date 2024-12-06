@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")  // Make sure this is here to link Firebase
 }
 
 android {
@@ -41,6 +42,7 @@ android {
 
     buildFeatures {
         compose = true
+        viewBinding = true // Enable View Binding here
     }
 
     composeOptions {
@@ -55,6 +57,7 @@ android {
 }
 
 dependencies {
+    implementation("androidx.core:core-ktx:1.15.0")
     implementation("androidx.core:core-ktx:1.15.0") // This requires compileSdk 35
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
     implementation("androidx.activity:activity-compose:1.9.3")
@@ -75,4 +78,7 @@ dependencies {
     implementation("com.mikepenz:iconics-core:5.3.2")
     implementation("com.mikepenz:fontawesome-typeface:5.9.0.0-kotlin@aar")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
+    implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth-ktx")
 }
