@@ -13,16 +13,23 @@
         android:theme="@style/Theme.WhereTo"
         tools:targetApi="31">
         <activity
-            android:name="com.example.chatapp.ChatActivity"
+            android:name=".SplashActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.WhereTo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.chatapp.ChatActivity"></activity>
+        <activity android:name="com.example.whereto.CountriesRegionsActivity"></activity>
+        <activity android:name="com.example.whereto.LoginActivity"></activity>
+        <activity android:name="com.example.whereto.SignUpActivity"></activity>
+        <activity android:name="com.example.whereto.MainActivity"></activity>
+        <activity android:name="com.example.whereto.SearchActivity"></activity>
+        <activity android:name="com.example.whereto.PlaceDetailsActivity"></activity>
+
     </application>
 
 </manifest>

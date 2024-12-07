@@ -3,14 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_above="@+id/bottom_navigation"
+    >
 
   <!-- ScrollView containing all your content -->
   <ScrollView
       android:id="@+id/contentScrollView"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:layout_above="@+id/bottom_navigation"
       android:padding="16dp"
       android:background="@android:color/white"
       android:orientation="vertical">
@@ -90,6 +91,7 @@
               android:layout_height="24dp"
               android:background="?attr/selectableItemBackgroundBorderless"
               android:src="@drawable/ic_change"
+              android:clickable="true"
               android:tint="@color/black"
               app:tint="@color/black" />
 
@@ -174,9 +176,11 @@
                 android:layout_marginBottom="8dp"
                 android:elevation="4dp">
 
-              <ImageView
+              <ImageButton
+                  android:id="@+id/JJ"
                   android:layout_width="match_parent"
                   android:layout_height="120dp"
+                  android:backgroundTint="@color/white"
                   android:scaleType="centerCrop"
                   android:src="@drawable/joe_and_juice" />
             </androidx.cardview.widget.CardView>
@@ -210,7 +214,8 @@
                 android:layout_marginBottom="8dp"
                 android:elevation="4dp">
 
-              <ImageView
+              <ImageButton
+                  android:id="@+id/emSherif"
                   android:layout_width="match_parent"
                   android:layout_height="120dp"
                   android:scaleType="centerCrop"
@@ -246,7 +251,8 @@
                 android:layout_marginBottom="8dp"
                 android:elevation="4dp">
 
-              <ImageView
+              <ImageButton
+                  android:id="@+id/theBros"
                   android:layout_width="match_parent"
                   android:layout_height="120dp"
                   android:scaleType="centerCrop"
@@ -311,7 +317,8 @@
                 android:layout_marginBottom="8dp"
                 android:elevation="4dp">
 
-              <ImageView
+              <ImageButton
+                  android:id="@+id/tandm"
                   android:layout_width="match_parent"
                   android:layout_height="120dp"
                   android:scaleType="centerCrop"
@@ -347,7 +354,8 @@
                 android:layout_marginBottom="8dp"
                 android:elevation="4dp">
 
-              <ImageView
+              <ImageButton
+                  android:id="@+id/appetito"
                   android:layout_width="match_parent"
                   android:layout_height="120dp"
                   android:scaleType="centerCrop"
@@ -383,7 +391,8 @@
                 android:layout_marginBottom="8dp"
                 android:elevation="4dp">
 
-              <ImageView
+              <ImageButton
+                  android:id="@+id/alegna"
                   android:layout_width="match_parent"
                   android:layout_height="120dp"
                   android:scaleType="centerCrop"
@@ -449,7 +458,8 @@
                 android:layout_marginBottom="8dp"
                 android:elevation="4dp">
 
-              <ImageView
+              <ImageButton
+                  android:id="@+id/pierreAndFriends"
                   android:layout_width="match_parent"
                   android:layout_height="120dp"
                   android:scaleType="centerCrop"
@@ -485,7 +495,8 @@
                 android:layout_marginBottom="8dp"
                 android:elevation="4dp">
 
-              <ImageView
+              <ImageButton
+                  android:id="@+id/skybar"
                   android:layout_width="match_parent"
                   android:layout_height="120dp"
                   android:scaleType="centerCrop"
@@ -522,7 +533,8 @@
                 android:layout_marginBottom="8dp"
                 android:elevation="4dp">
 
-              <ImageView
+              <ImageButton
+                  android:id="@+id/spine"
                   android:layout_width="match_parent"
                   android:layout_height="120dp"
                   android:scaleType="centerCrop"
@@ -566,6 +578,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginTop="8dp"
+          android:layout_marginBottom="20dp"
           android:scrollbars="none">
 
         <LinearLayout
@@ -587,7 +600,8 @@
                 android:layout_marginBottom="8dp"
                 android:elevation="4dp">
 
-              <ImageView
+              <ImageButton
+                  android:id="@+id/barbar"
                   android:layout_width="match_parent"
                   android:layout_height="120dp"
                   android:scaleType="centerCrop"
@@ -623,7 +637,8 @@
                 android:layout_marginBottom="8dp"
                 android:elevation="4dp">
 
-              <ImageView
+              <ImageButton
+                  android:id="@+id/josephShawarma"
                   android:layout_width="match_parent"
                   android:layout_height="120dp"
                   android:scaleType="centerCrop"
@@ -659,7 +674,8 @@
                 android:layout_marginBottom="8dp"
                 android:elevation="4dp">
 
-              <ImageView
+              <ImageButton
+                  android:id="@+id/aboSobhi"
                   android:layout_width="match_parent"
                   android:layout_height="120dp"
                   android:scaleType="centerCrop"
@@ -683,178 +699,15 @@
           </LinearLayout>
         </LinearLayout>
       </HorizontalScrollView>
-
-
-
-
-
-      <!-- Add more sections similar to above -->
-
     </LinearLayout>
   </ScrollView>
 
 
-  <!-- Bottom Navigation Bar -->
-  <LinearLayout
-      android:id="@+id/bottom_navigation"
+  <include
+      android:id="@+id/footer_buttons_include"
+      layout="@layout/footer_layout"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_alignParentBottom="true"
-      android:background="#EEEEEE"
-      android:orientation="horizontal"
-      android:padding="8dp"
-      android:gravity="center">
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginTop="4dp">
-
-
-      <ImageButton
-          android:id="@+id/home_button"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:background="?attr/selectableItemBackgroundBorderless"
-          android:src="@drawable/ic_home"
-          android:contentDescription="Home"
-          app:tint="@color/black" />
-
-
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="4dp"
-          android:text="Home"
-          android:textSize="12sp"
-          android:textColor="@color/black"
-          android:gravity="center" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginTop="4dp">
-
-
-      <ImageButton
-          android:id="@+id/search_button"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:background="?attr/selectableItemBackgroundBorderless"
-          android:src="@drawable/ic_search"
-          android:contentDescription="Search"
-          app:tint="@color/black" />
-
-
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="4dp"
-          android:text="Search"
-          android:textSize="12sp"
-          android:textColor="@color/black"
-          android:gravity="center" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginTop="4dp">
-
-
-      <ImageButton
-          android:id="@+id/map_button"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:background="?attr/selectableItemBackgroundBorderless"
-          android:src="@drawable/ic_map"
-          android:contentDescription="Map"
-          app:tint="@color/black" />
-
-
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="4dp"
-          android:text="Map"
-          android:textSize="12sp"
-          android:textColor="@color/black"
-          android:gravity="center" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginTop="4dp">
-
-
-      <ImageButton
-          android:id="@+id/fav_button"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:background="?attr/selectableItemBackgroundBorderless"
-          android:src="@drawable/ic_fav"
-          android:contentDescription="Favorites"
-          app:tint="@color/black" />
-
-
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="4dp"
-          android:text="Favorites"
-          android:textSize="12sp"
-          android:textColor="@color/black"
-          android:gravity="center" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginTop="4dp">
-
-
-      <ImageButton
-          android:id="@+id/profile_button"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:background="?attr/selectableItemBackgroundBorderless"
-          android:src="@drawable/ic_profile2"
-          android:contentDescription="Profile"
-          app:tint="@color/black" />
-
-
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="4dp"
-          android:text="Profile"
-          android:textSize="12sp"
-          android:textColor="@color/black"
-          android:gravity="center" />
-
-    </LinearLayout>
-
-  </LinearLayout>
+      android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

@@ -31,7 +31,7 @@ class SplashActivity : AppCompatActivity() {
 
         // Wait for 2-3 seconds and then navigate to the login page
         Handler().postDelayed({
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish() // Close SplashActivity to prevent returning back to it
         }, 2000) // 2000ms = 2 seconds
