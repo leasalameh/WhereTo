@@ -49,7 +49,7 @@
             android:layout_marginBottom="5dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_chatbot"
-            android:tint="@color/black"
+            app:tint="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/chatBot"
             app:layout_constraintEnd_toStartOf="@+id/whereToText"
             app:layout_constraintStart_toStartOf="parent"
@@ -90,7 +90,6 @@
               android:layout_height="24dp"
               android:background="?attr/selectableItemBackgroundBorderless"
               android:src="@drawable/ic_change"
-              android:tint="@color/black"
               app:tint="@color/black" />
 
           <TextView
