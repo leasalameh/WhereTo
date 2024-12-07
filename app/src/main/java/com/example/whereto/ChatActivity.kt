@@ -1,5 +1,6 @@
 package com.example.whereto
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.widget.EditText
@@ -25,6 +26,29 @@ class ChatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chatbot)  // Make sure the layout file is correct
+
+        val backArrow: ImageButton = findViewById(R.id.back_arrow)
+
+        backArrow.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Find the buttons by their IDs in the main layout
+        val searchButton: ImageButton = findViewById(R.id.search_button)
+        val homeButton: ImageButton = findViewById(R.id.home_button)
+
+
+        searchButton.setOnClickListener {
+            val intent = Intent(this, SearchActivity::class.java)
+            startActivity(intent)
+        }
+
+        homeButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
 
         // Initialize views
         messageInput = findViewById(R.id.message_input)
