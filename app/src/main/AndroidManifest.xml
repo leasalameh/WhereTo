@@ -23,13 +23,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.chatapp.ChatActivity"></activity>
+        <activity android:name="com.example.whereto.ChatActivity"></activity>
         <activity android:name="com.example.whereto.CountriesRegionsActivity"></activity>
         <activity android:name="com.example.whereto.LoginActivity"></activity>
         <activity android:name="com.example.whereto.SignUpActivity"></activity>
         <activity android:name="com.example.whereto.MainActivity"></activity>
         <activity android:name="com.example.whereto.SearchActivity"></activity>
         <activity android:name="com.example.whereto.PlaceDetailsActivity"></activity>
+        <activity android:name="com.example.whereto.MainActivity2"></activity>
 
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>

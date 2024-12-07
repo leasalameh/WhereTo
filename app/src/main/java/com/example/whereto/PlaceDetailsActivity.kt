@@ -1,10 +1,19 @@
 package com.example.whereto
 
+import Place
 import android.content.Intent
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.RatingBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -16,7 +25,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.chatapp.ChatActivity
+import com.bumptech.glide.Glide
+import com.example.whereto.ChatActivity
 import com.example.whereto.ui.theme.WhereToTheme
 
 class PlaceDetailsActivity : AppCompatActivity() {
@@ -25,37 +35,106 @@ class PlaceDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_place_details)
 
-        // Retrieve the button ID passed in the intent
-        val buttonId = intent.getIntExtra("image_id", -1)  // Default to -1 if no data is passed
+        // Get the placeId passed through the intent
+        val placeId = intent.getStringExtra("placeId")
 
-        // Log the buttonId to check if it's correct
-        Log.d("PlaceDetailsActivity", "Received buttonId: $buttonId")
-
-        // Use the ID to show relevant data or perform actions
-        when (buttonId) {
-            R.id.JJ -> {
-                // Handle Joe and Juice logic here
-                showDetails("Joe and the Juice")
-            }
-            R.id.emSherif -> {
-                // Handle Em Sherif logic here
-                showDetails("Em Sherif")
-            }
-            R.id.theBros -> {
-                // Handle The Bros logic here
-                showDetails("The Bros")
-            }
-            // Handle other IDs similarly
-            else -> {
-                // Handle unknown ID or show default
-                Toast.makeText(this, "Unknown place", Toast.LENGTH_SHORT).show()
-            }
+        // Check if the placeId is not null and fetch the place details
+        if (placeId != null) {
+            fetchPlaceDetails(placeId)
+        } else {
+            // Handle case where placeId is not passed (e.g., show error or fallback)
+            Toast.makeText(this, "Place ID not found", Toast.LENGTH_SHORT).show()
         }
     }
 
-    // Function to show details based on place
-    private fun showDetails(placeName: String) {
-        // Display place details, e.g., set text, load image, etc.
-        Toast.makeText(this, "Showing details for $placeName", Toast.LENGTH_SHORT).show()
+    private fun fetchPlaceDetails(placeId: String) {
+        // Create an instance of your ApiService
+        val apiService = ApiClient.getClient().create(ApiService::class.java)
+
+        // Make the API call to fetch details of the place
+        val call = apiService.getPlaceDetails(placeId)
+
+        call.enqueue(object : Callback<Place> {
+            override fun onResponse(call: Call<Place>, response: Response<Place>) {
+                if (response.isSuccessful) {
+                    val place = response.body()
+                    if (place != null) {
+                        // Log the API response to check the data
+                        Log.d("API Response", "Fetched Place Details: $place")
+
+                        // Now call the method to update the UI with the fetched data
+                        updateUI(place)
+                    } else {
+                        Toast.makeText(this@PlaceDetailsActivity, "Place not found", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Log.e("API Error", "Error fetching data: ${response.message()}")
+                    Toast.makeText(this@PlaceDetailsActivity, "Error fetching data", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<Place>, t: Throwable) {
+                Log.e("API Failure", "Failed to fetch place details: ${t.message}")
+                Toast.makeText(this@PlaceDetailsActivity, "Failed to fetch data", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun updateUI(place: Place) {
+        // Assuming you have set up your UI elements (TextViews, ImageViews, etc.)
+        val placeTitle: TextView = findViewById(R.id.place_title)
+        val placeLocation: TextView = findViewById(R.id.place_location)
+        val placeDescription: TextView = findViewById(R.id.place_description)
+        val placeImage: ImageView = findViewById(R.id.place_image)
+        val placeTagsLayout: LinearLayout = findViewById(R.id.place_tags)
+
+        // Populate the UI with the data from the API response
+        placeTitle.text = place.name
+        placeLocation.text = place.location
+        placeDescription.text = place.description
+        Glide.with(this)  // Glide for image loading
+            .load(place.imageUrl)
+            .into(placeImage)
+
+        // Populate tags dynamically
+        for (tag in place.tags) {
+            val tagTextView = TextView(this)
+            tagTextView.text = tag
+            tagTextView.setTextColor(Color.BLACK)
+            tagTextView.setBackgroundResource(R.drawable.tag_background)
+            tagTextView.setPadding(15, 9, 15, 9)
+
+            // Add margin to each tag
+            val params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            params.setMargins(10, 0, 10, 0) // Set the margins (left, top, right, bottom)
+
+            // Apply the layout parameters to the tag
+            tagTextView.layoutParams = params
+
+            // Add the tag to the tags container
+            placeTagsLayout.addView(tagTextView)
+        }
+
+        // Set other fields like price range, rating, opening hours, etc.
+        val priceRange: TextView = findViewById(R.id.place_price_range)
+        priceRange.text = place.priceRange
+
+        val ratingBar: RatingBar = findViewById(R.id.place_rating)
+        ratingBar.rating = place.rating.toFloat()
+
+        val openingHours: TextView = findViewById(R.id.opening_hours_text)
+        openingHours.text = place.openingHours.joinToString("\n")
+
+        val locationAddress: TextView = findViewById(R.id.location_address)
+        locationAddress.text = place.locationaddress
+
+        val contactInfo: TextView = findViewById(R.id.contact_info)
+        contactInfo.text = place.contactInfo
+
+        val instaPage: TextView = findViewById(R.id.insta_info)
+        instaPage.text = place.instapage
     }
 }
