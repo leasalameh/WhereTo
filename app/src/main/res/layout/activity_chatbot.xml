@@ -40,84 +40,90 @@
         android:padding="0dp"
         android:background="#FFFFFF"> <!-- Ensure background matches -->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/message_container"
-        android:spacing="2dp"
-        android:padding="0dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/message_container"
+            android:spacing="2dp"
+            android:padding="0dp">
 
-    <!-- Example of an AI Message -->
+            <!-- Example of an AI Message -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="start"
+                android:padding="8dp"> <!-- Reduced padding -->
+
+                <!-- AI Message Text -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WhereTo today?"
+                    android:padding="10dp"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:gravity="start"
+                    android:layout_marginEnd="8dp" />
+            </LinearLayout>
+
+            <!-- Example of a User Message -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="end"
+                android:padding="8dp">
+
+                <!-- User Message Text -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:padding="10dp"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="8dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+    <TextView
+        android:id="@+id/responseText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="14sp"
+        android:textColor="#000000"/>
+    <!-- Message Input Area -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="start"
-        android:padding="8dp"> <!-- Reduced padding -->
+        android:background="#FFFFFF"
+        android:padding="16dp"
+        android:weightSum="1">
 
-    <!-- AI Message Text -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="WhereTo today?"
-        android:padding="10dp"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp"
-        android:gravity="start"
-        android:layout_marginEnd="8dp" />
+        <EditText
+            android:id="@+id/message_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Type a message..."
+            android:padding="12dp"
+            android:textSize="14sp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/rounded_edittext_border"
+            android:inputType="text" />
+
+        <ImageButton
+            android:id="@+id/send_button"
+            android:layout_width="24dp"
+            android:layout_height="30dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_send"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+
 </LinearLayout>
-
-    <!-- Example of a User Message -->
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:gravity="end"
-    android:padding="8dp">
-
-    <!-- User Message Text -->
-    <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text=""
-    android:padding="10dp"
-    android:textColor="#FFFFFF"
-    android:textSize="14sp"
-    android:layout_marginEnd="8dp" />
-    </LinearLayout>
-
-    </LinearLayout>
-    </ScrollView>
-
-    <!-- Message Input Area -->
-<LinearLayout
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:orientation="horizontal"
-android:background="#FFFFFF"
-android:padding="16dp"
-android:weightSum="1">
-
-<EditText
-    android:id="@+id/message_input"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_weight="1"
-    android:hint="Type a message..."
-    android:padding="12dp"
-    android:textSize="14sp"
-    android:layout_marginEnd="8dp"
-    android:background="@drawable/rounded_edittext_border"
-    android:inputType="text" />
-
-<ImageButton
-    android:id="@+id/send_button"
-    android:layout_width="24dp"
-    android:layout_height="30dp"
-    android:background="?attr/selectableItemBackgroundBorderless"
-    android:src="@drawable/ic_send"
-    android:layout_marginTop="8dp" />
-</LinearLayout>
-
-    </LinearLayout>

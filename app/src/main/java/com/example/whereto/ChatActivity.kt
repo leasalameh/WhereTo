@@ -1,4 +1,4 @@
-package com.example.chatapp
+package com.example.whereto
 
 import android.os.Bundle
 import android.view.Gravity
@@ -6,10 +6,15 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.whereto.R
 import android.graphics.Color
+import android.widget.ImageView
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class ChatActivity : AppCompatActivity() {
 
@@ -39,70 +44,88 @@ class ChatActivity : AppCompatActivity() {
         }
     }
 
-    // Function to display messages
+    // Function to display messages in the chat
     private fun displayMessage(message: String, isAiMessage: Boolean) {
-        // Create a container layout for the message (either user or AI)
         val containerLayout = LinearLayout(this)
-        containerLayout.orientation = LinearLayout.HORIZONTAL // Horizontal layout for the avatar and message
+        containerLayout.orientation = LinearLayout.HORIZONTAL
 
-        // Apply gravity to align messages to left (AI) or right (User)
+        // Align messages based on sender (AI or User)
         if (isAiMessage) {
-            containerLayout.gravity = Gravity.START // Align AI messages to the left
+            containerLayout.gravity = Gravity.START
         } else {
-            containerLayout.gravity = Gravity.END   // Align User messages to the right
+            containerLayout.gravity = Gravity.END
         }
 
-        // Create the TextView for the message
         val textView = TextView(this)
         textView.text = message
 
-        // Apply styles based on whether it's an AI message or a user message
+        // Apply different background based on the sender
         if (isAiMessage) {
-            textView.setBackgroundResource(R.drawable.rounded_left_bubble) // Gray background for AI message
+            textView.setBackgroundResource(R.drawable.rounded_left_bubble)
         } else {
-            textView.setBackgroundResource(R.drawable.rounded_right_bubble) // Blue background for user message
+            textView.setBackgroundResource(R.drawable.rounded_right_bubble)
         }
-
         textView.setTextColor(Color.BLACK)
 
-        // Set the layout parameters for the TextView
         val params = LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.WRAP_CONTENT,  // Set width based on content
-            LinearLayout.LayoutParams.WRAP_CONTENT   // Set height based on content
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
         )
         textView.layoutParams = params
 
-        // Add the TextView to the container layout
         containerLayout.addView(textView)
 
-        // If this is an AI message, add the avatar icon before the message
         if (isAiMessage) {
-            // Create ImageView for the AI avatar
             val avatarImageView = ImageView(this)
-            avatarImageView.setImageResource(R.drawable.ic_ai_avatar) // Set the avatar icon
+            avatarImageView.setImageResource(R.drawable.ic_ai_avatar)
 
-            // Set the image size (optional, can adjust based on your requirements)
-            val avatarParams = LinearLayout.LayoutParams(
-                48, // width of the avatar
-                48  // height of the avatar
-            )
-            avatarParams.marginEnd = 8 // Add space between the avatar and the message
+            val avatarParams = LinearLayout.LayoutParams(48, 48)
+            avatarParams.marginEnd = 8
             avatarImageView.layoutParams = avatarParams
-
-            // Add the avatar ImageView before the message TextView in the container layout
-            containerLayout.addView(avatarImageView, 0)  // Add the avatar at index 0 (before the message)
+            containerLayout.addView(avatarImageView, 0)
         }
 
-        // Add the container layout to the message container
         messageContainer.addView(containerLayout)
     }
 
-    // Function to handle sending a message
+    // Function to handle sending a message and calling the backend API
     private fun sendMessage(message: String) {
-        // Display the user message in the chat (right-aligned)
         displayMessage(message, isAiMessage = false)
 
-        // Optionally, show an AI response
-        displayMessage("Here's a suggestion: Try a cozy cafe nearby!", isAiMessage = true)
+        // Call the backend API to get a response
+        sendQueryToApi(message) { response ->
+            displayMessage(response, isAiMessage = true)
+        }
+    }
+
+    // Function to send the query to the backend API using Retrofit
+    fun sendQueryToApi(query: String, onResponse: (String) -> Unit) {
+        // Set the Retrofit client base URL to your API URL
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://10.0.2.2:3000/")  // Replace with your backend URL if needed
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        // Create an instance of your API service
+        val apiService = retrofit.create(ApiService::class.java)
+
+        // Prepare the request body (send query as JSON)
+        val queryModel = Query(query)
+
+        // Make the API call
+        val call = apiService.sendQuery(queryModel)
+        call.enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                if (response.isSuccessful) {
+                    onResponse(response.body()?.string() ?: "No response from AI")
+                } else {
+                    onResponse("Error: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                onResponse("Failure: ${t.message}")
+            }
+        })
     }
 }
