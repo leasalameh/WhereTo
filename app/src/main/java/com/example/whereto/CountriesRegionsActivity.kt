@@ -64,7 +64,10 @@ class CountriesRegionsActivity : AppCompatActivity() {
         home = footerLayout.findViewById(R.id.home_button)
 
         // Set OnClickListeners for the footer buttons
-
+        search.setOnClickListener {
+            val intent = Intent(this, SearchActivity::class.java)
+            startActivity(intent)
+        }
         home.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
