@@ -19,7 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.chatapp.ChatActivity
+import com.example.whereto.ChatActivity
 import com.example.whereto.ui.theme.WhereToTheme
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -29,7 +29,7 @@ import retrofit2.Response
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home_page)  // Ensure this is the correct layout file
+        setContentView(R.layout.activity_home_page)
 
         // Find the buttons by their IDs in the main layout
         val changeButton: ImageButton = findViewById(R.id.change_button)
@@ -68,17 +68,29 @@ class MainActivity : ComponentActivity() {
         val josephShawarma: ImageButton = findViewById(R.id.josephShawarma)
         val aboSobhi: ImageButton = findViewById(R.id.aboSobhi)
 
-
         val clickListener = View.OnClickListener { view ->
-            // Retrieve the ID of the clicked button
             val buttonId = view.id
             Log.d("MainActivity", "Clicked buttonId: $buttonId")  // Log the clicked buttonId
 
-            // Use the ID  to pass data to the target activity
-            val intent = Intent(this, PlaceDetailsActivity::class.java)
-            intent.putExtra("image_id", buttonId)  //passing the id to know which data to get
+            val placeId = when (buttonId) {
+                R.id.JJ -> "675483161c3876119924977b" // Joe & The Juice
+                R.id.emSherif -> "675483161c3876119924977c" // Em Sherif
+                R.id.theBros -> "675483161c3876119924977d" // The Bros
+                R.id.appetito -> "675483161c3876119924977f" // Appetito
+                R.id.tandm -> "675483161c3876119924977e" // Tom & Mutz
+                R.id.alegna -> "675483161c38761199249780" // Alegna
+                R.id.spine -> "675483161c38761199249783" // Spine
+                R.id.skybar -> "675483161c38761199249782" // SkyBar
+                R.id.pierreAndFriends -> "675483161c38761199249781" // Pierre & Friends
+                R.id.barbar -> "675483161c38761199249784" // Barbar
+                R.id.josephShawarma -> "675483161c38761199249785" // Shawarma Joseph
+                R.id.aboSobhi -> "675483161c38761199249786" // Abou Sobhi
+                else -> "" // Default case if ID is unknown
+            }
 
-            // Start the activity
+            // Use the ID to pass data to PlaceDetailsActivity
+            val intent = Intent(this, PlaceDetailsActivity::class.java)
+            intent.putExtra("placeId", placeId)  // Passing the correct placeId
             startActivity(intent)
         }
 
@@ -95,7 +107,5 @@ class MainActivity : ComponentActivity() {
         barbar.setOnClickListener(clickListener)
         josephShawarma.setOnClickListener(clickListener)
         aboSobhi.setOnClickListener(clickListener)
-
     }
-
 }

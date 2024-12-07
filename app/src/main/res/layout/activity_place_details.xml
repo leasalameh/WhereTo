@@ -43,19 +43,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Joe &amp; the Juice"
-                    android:textColor="@color/black"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:text="Place Name"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/place_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Downtown"
-                    android:textColor="#666"
-                    android:textSize="16sp" />
+                    android:text="Place Location"
+                android:textColor="#666"
+                android:textSize="16sp" />
             </LinearLayout>
 
             <!-- Icons: Heart, Check, Save -->
@@ -94,68 +94,26 @@
             android:id="@+id/place_image"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:src="@drawable/joeandthejuice"
-            android:scaleType="centerCrop"
-            android:layout_marginBottom="16dp" />
+            android:src="@drawable/placeholder_image"
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="16dp" />
 
         <!-- Description -->
         <TextView
             android:id="@+id/place_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Joe &amp; The Juice in Lebanon is a vibrant café offering fresh, nutritious juices, smoothies, and salads, along with specialty coffee."
-            android:textColor="@color/black"
-            android:layout_marginBottom="16dp" />
+            android:text="Place Description"
+        android:textColor="@color/black"
+        android:layout_marginBottom="16dp" />
 
         <!-- Tags -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="16dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tags:"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_marginEnd="8dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Coffee"
-                android:textColor="@color/black"
-                android:padding="8dp"
-                android:background="@drawable/tag_background"
-                android:layout_marginEnd="8dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Juices"
-                android:textColor="@color/black"
-                android:padding="8dp"
-                android:background="@drawable/tag_background"
-                android:layout_marginEnd="8dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Salads"
-                android:textColor="@color/black"
-                android:padding="8dp"
-                android:background="@drawable/tag_background"
-                android:layout_marginEnd="8dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Healthy"
-                android:textColor="@color/black"
-                android:padding="8dp"
-                android:background="@drawable/tag_background" />
+            android:layout_marginBottom="16dp"
+            android:id="@+id/place_tags"> <!-- Will be updated dynamically -->
         </LinearLayout>
 
         <!-- Ratings and Price -->
@@ -167,24 +125,25 @@
             android:gravity="center_vertical">
 
             <TextView
+                android:id="@+id/place_price_range"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$$$$"
-                android:textColor="@color/black"
-                android:layout_marginEnd="16dp"
-                android:textSize="18sp" />
+                android:text="$$"
+            android:textColor="@color/black"
+            android:layout_marginEnd="16dp"
+            android:textSize="18sp" />
 
             <RatingBar
+                android:id="@+id/place_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:numStars="5"
-                android:rating="5.0"
-                android:stepSize="0.5"
-                android:isIndicator="true"
-                android:progressTint="@color/custom_yellow"
-                android:progressBackgroundTint="@android:color/transparent"
-                android:background="@android:color/transparent" />
-
+                android:rating="0.0"
+            android:stepSize="0.5"
+            android:isIndicator="true"
+            android:progressTint="@color/custom_yellow"
+            android:progressBackgroundTint="@android:color/transparent"
+            android:background="@android:color/transparent" />
         </LinearLayout>
 
         <!-- Opening Hours -->
@@ -193,7 +152,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="8dp">
-
             <ImageView
                 android:id="@+id/opening_hours_icon"
                 android:layout_width="wrap_content"
@@ -205,19 +163,19 @@
                 android:id="@+id/opening_hours_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Opening Hours:"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
+                android:text="Opening Hours"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
         </LinearLayout>
-
 
         <!-- Map Section -->
         <TextView
+            android:id="@+id/opening_hours_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text=". Monday: 08:00am - 12:00am\n.Tuesday: 08:00am - 12:00am\n.Wednesday: 08:00am - 12:00am\n.Thursday: 08:00am - 12:00am\n.Friday: 08:00am - 12:00am\n.Saturday: 08:00am - 12:00am\n.Sunday: 08:00am - 12:00am"
-            android:textColor="#696969"/>
+            android:text="Monday: 08:00am - 12:00am"
+        android:textColor="#696969"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -229,7 +187,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="14dp">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -238,26 +196,21 @@
                     android:layout_marginEnd="8dp"/>
 
                 <TextView
+                    android:id="@+id/location_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="WG22+4FM, Beirut, Lebanon"
-                    android:textColor="@color/black"
-                    android:paddingBottom="2dp" />
+                    android:text="Location Address"
+                android:textColor="@color/black"
+                android:paddingBottom="2dp" />
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/map_image"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:src="@drawable/map_image"
-                android:scaleType="centerCrop"
-                android:layout_marginBottom="8dp" />
-
+            <!-- Contact Info -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="5dp">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -265,91 +218,38 @@
                     android:src="@drawable/phone_icon"
                     android:layout_marginEnd="8dp"/>
 
-                <TextView
-                    android:id="@+id/contact_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Phone Number"
-                    android:textColor="@color/black"
-                    android:paddingTop="4dp"
-                    />
+            <TextView
+                android:id="@+id/contact_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact Info"
+            android:textColor="@color/black"
+            android:paddingTop="4dp" />
             </LinearLayout>
 
+            <!-- Insta info -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="5dp">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/insta"
-                    android:layout_marginEnd="12dp"
-                    />
+                    android:layout_marginEnd="8dp"/>
 
                 <TextView
+                    android:id="@+id/insta_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="joeandthejuicelebanon"
-                    android:textColor="@color/black"/>
+                    android:text="Insta Info"
+                    android:textColor="@color/black"
+                    android:paddingTop="4dp" />
             </LinearLayout>
 
         </LinearLayout>
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="18dp" >
-
-            <!-- Horizontal Line -->
-            <View
-                android:id="@+id/horizontal_line"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#000000"
-                android:layout_alignParentTop="true" />
-
-
-            <!-- Action Buttons -->
-            <LinearLayout
-                android:id="@+id/sticky_navbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_below="@id/horizontal_line"
-                android:background="@android:color/transparent"
-                android:paddingTop="2dp" >
-
-                <Button
-                    android:id="@+id/btn_book"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Book"
-                    android:textColor="#000000"
-                    android:background="@drawable/button_border"
-                    android:layout_margin="9dp"
-                    android:padding="5dp" />
-
-                <View
-                    android:layout_width="8dp"
-                    android:layout_height="match_parent" />
-
-                <Button
-                    android:id="@+id/btn_menu"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Menu"
-                    android:textColor="#000000"
-                    android:background="@drawable/button_border"
-                    android:layout_margin="18dp"
-                    android:padding="5dp" />
-
-            </LinearLayout>
-        </RelativeLayout>
-
     </LinearLayout>
 </ScrollView>

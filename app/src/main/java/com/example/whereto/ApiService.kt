@@ -6,6 +6,7 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface ApiService {
 
@@ -16,4 +17,7 @@ interface ApiService {
     // GET request to fetch all places
     @GET("api/places")
     fun getPlaces(): Call<List<Place>>
+
+    @GET("api/places/{id}")
+    fun getPlaceDetails(@Path("id") placeId: String): Call<Place>
 }

@@ -8,4 +8,6 @@ data class Place(
     val priceRange: String,
     val contactInfo: String,
     val imageUrl: String,
+    val instapage: String,
+    val locationaddress: String,
 )

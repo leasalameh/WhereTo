@@ -13,7 +13,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.chatapp.ChatActivity
+import com.example.whereto.ChatActivity
 
 class CountriesRegionsActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
