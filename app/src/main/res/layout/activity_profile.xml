@@ -1,7 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:layout_above="@+id/bottom_navigation"
+    >
 
     <!-- Profile Header (Profile Image and Username aligned horizontally) -->
     <RelativeLayout
@@ -148,38 +152,13 @@
         android:layout_marginTop="16dp" />
 
     <!-- Footer Navigation -->
-    <LinearLayout
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:padding="8dp"
-        android:background="?android:attr/windowBackground">
 
-        <ImageButton
-            android:id="@+id/home_button"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_home"
-            android:background="?attr/selectableItemBackground"
-            android:contentDescription="Home" />
 
-        <ImageButton
-            android:id="@+id/search_button"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_search"
-            android:background="?attr/selectableItemBackground"
-            android:contentDescription="Search" />
+        <include
+            android:id="@+id/footer_buttons_include"
+            layout="@layout/footer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true" />
 
-        <ImageButton
-            android:id="@+id/profile_button"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_profile"
-            android:background="?attr/selectableItemBackground"
-            android:contentDescription="Profile" />
-    </LinearLayout>
 </RelativeLayout>

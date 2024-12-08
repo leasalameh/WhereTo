@@ -37,7 +37,7 @@ class ChatActivity : AppCompatActivity() {
         // Find the buttons by their IDs in the main layout
         val searchButton: ImageButton = findViewById(R.id.search_button)
         val homeButton: ImageButton = findViewById(R.id.home_button)
-
+        val profile: ImageButton = findViewById(R.id.profile_button)
 
         searchButton.setOnClickListener {
             val intent = Intent(this, SearchActivity::class.java)
@@ -46,6 +46,11 @@ class ChatActivity : AppCompatActivity() {
 
         homeButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        profile.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
 
