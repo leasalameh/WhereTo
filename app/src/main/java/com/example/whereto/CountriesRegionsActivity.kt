@@ -17,19 +17,24 @@ import com.example.whereto.ChatActivity
 
 class CountriesRegionsActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
-    private lateinit var backButton: Button
     private lateinit var titleText: TextView
     private lateinit var searchEditText: EditText
     private lateinit var search: ImageButton
     private lateinit var home: ImageButton
+    private lateinit var backArrow: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_regionspage)  // Main layout with included footer
 
+        backArrow = findViewById(R.id.back_button)
+        backArrow.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         // Initialize your UI components
         recyclerView = findViewById(R.id.recycler_view)
-        backButton = findViewById(R.id.back_button)
         titleText = findViewById(R.id.region_label)
         searchEditText = findViewById(R.id.search_edit_text)
 
@@ -38,14 +43,6 @@ class CountriesRegionsActivity : AppCompatActivity() {
 
         // Setup initial region view
         setupRegions()
-
-        // Setup back button click
-        backButton.setOnClickListener {
-            setupRegions()
-            backButton.visibility = View.GONE
-            searchEditText.visibility = View.GONE
-            titleText.text = getString(R.string.label_region)
-        }
 
         // Adding TextWatcher for search functionality
         searchEditText.addTextChangedListener(object : TextWatcher {
@@ -104,7 +101,6 @@ class CountriesRegionsActivity : AppCompatActivity() {
         recyclerView.adapter = CountriesAdapter(countries) { _ -> // Use '_' if 'item' is not used
             // Actions can be added here if needed when clicking on a country.
         }
-        backButton.visibility = View.VISIBLE
         searchEditText.visibility = View.VISIBLE
         titleText.text = getString(R.string.label_country)
     }
