@@ -56,7 +56,7 @@ class CountriesRegionsActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {}
         })
 
-        // Now, initialize the footer buttons after setting the content view
+        // Initialize footer buttons
         val footerLayout = findViewById<LinearLayout>(R.id.bottom_navigation)  // Adjust based on your layout
 
         // Initialize footer buttons
@@ -88,21 +88,25 @@ class CountriesRegionsActivity : AppCompatActivity() {
     private fun showCountries(region: String) {
         val countries = when (region) {
             "Middle East" -> listOf(
-                CountriesAdapter.RegionItem("Lebanon", R.drawable.country_lebanon),
+                CountriesAdapter.RegionItem("Lebanon", R.drawable.country_lebanon),  // Lebanon is clickable
                 CountriesAdapter.RegionItem("Dubai", R.drawable.country_dubai, true),
                 CountriesAdapter.RegionItem("Qatar", R.drawable.country_qatar, true),
                 CountriesAdapter.RegionItem("Egypt", R.drawable.country_egypt, true)
             )
             "Europe" -> listOf(
-                CountriesAdapter.RegionItem("Paris", R.drawable.country_paris),
+                CountriesAdapter.RegionItem("Paris", R.drawable.paris_comingsoon),
                 CountriesAdapter.RegionItem("Barcelona", R.drawable.country_barcelona, true),
                 CountriesAdapter.RegionItem("Madrid", R.drawable.country_madrid, true),
                 CountriesAdapter.RegionItem("Rome", R.drawable.country_rome, true)
             )
             else -> emptyList() // Ensure this is properly formatted as a default case
         }
-        recyclerView.adapter = CountriesAdapter(countries) { _ -> // Use '_' if 'item' is not used
-            // Actions can be added here if needed when clicking on a country.
+        recyclerView.adapter = CountriesAdapter(countries) { regionItem ->
+            // Only Lebanon takes you to MainActivity
+            if (regionItem.name == "Lebanon") {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
         }
         backButton.visibility = View.VISIBLE
         searchEditText.visibility = View.VISIBLE
