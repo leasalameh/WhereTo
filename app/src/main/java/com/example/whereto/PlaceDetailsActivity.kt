@@ -5,6 +5,11 @@ import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.content.Intent
+import android.graphics.Color
+import android.os.Bundle
+import android.util.Log
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RatingBar
@@ -33,6 +38,7 @@ class PlaceDetailsActivity : AppCompatActivity() {
             Toast.makeText(this, "Place ID not found", Toast.LENGTH_SHORT).show()
         }
 
+// <<<<<<< ghanemsbranch
         // Initialize icons and set click listeners
         val favoriteIcon: ImageView = findViewById(R.id.heart_icon)
         val beenIcon: ImageView = findViewById(R.id.check_icon)
@@ -64,6 +70,26 @@ class PlaceDetailsActivity : AppCompatActivity() {
             editor.putStringSet(category, currentPlaces)
             editor.apply()
             Toast.makeText(this, "Added to $category", Toast.LENGTH_SHORT).show()
+// =======
+        // Find the buttons by their IDs in the main layout
+        val searchButton: ImageButton = findViewById(R.id.search_button)
+        val homeButton: ImageButton = findViewById(R.id.home_button)
+        val backArrow: ImageButton = findViewById(R.id.back_arrow)
+
+        searchButton.setOnClickListener {
+            val intent = Intent(this, SearchActivity::class.java)
+            startActivity(intent)
+        }
+
+        homeButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        backArrow.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+// >>>>>>> main
         }
     }
 
