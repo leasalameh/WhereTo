@@ -5,26 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageButton
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.ComponentActivity
-import androidx.activity.viewModels
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.whereto.ChatActivity
-import com.example.whereto.ui.theme.WhereToTheme
-import okhttp3.ResponseBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +16,13 @@ class MainActivity : ComponentActivity() {
         val changeButton: ImageButton = findViewById(R.id.change_button)
         val searchButton: ImageButton = findViewById(R.id.search_button)
         val chatButton: ImageButton = findViewById(R.id.chat_button)
+        val profileButton: ImageButton = findViewById(R.id.profile_button) // Profile icon button
 
+        // Set OnClickListener for the profile button
+        profileButton.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
 
         // Set an OnClickListener for the change button
         changeButton.setOnClickListener {

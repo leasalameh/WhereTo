@@ -38,12 +38,10 @@ class CountriesAdapter(private var items: List<RegionItem>, private val itemClic
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val imageView: ImageView = itemView.findViewById(R.id.imageCountry) ?: itemView.findViewById(R.id.imageRegion)
         private val textView: TextView = itemView.findViewById(R.id.textCountry) ?: itemView.findViewById(R.id.textRegion)
-        private val comingSoonView: TextView? = itemView.findViewById(R.id.textComingSoon)
 
         fun bind(item: RegionItem) {
             imageView.setImageResource(item.imageRes)
             textView.text = item.name
-            comingSoonView?.visibility = if (item.comingSoon) View.VISIBLE else View.GONE
             itemView.setOnClickListener { itemClick(item) }
         }
     }

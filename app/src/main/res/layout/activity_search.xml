@@ -1,19 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_above="@+id/bottom_navigation"
+    android:padding="16dp">
 
-    <!-- TextView to display "whereTo" -->
-    <TextView
-        android:id="@+id/textViewWhereTo"
-        android:layout_width="wrap_content"
+    <!-- Search EditText -->
+    <EditText
+        android:id="@+id/search_edit_text"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="whereTo"
-        android:textSize="24sp"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:layout_marginTop="200dp"
-        tools:ignore="MissingConstraints" />
+        android:hint="Search Places"
+        android:inputType="text"
+        android:drawableLeft="@drawable/ic_search2"
+        android:drawablePadding="10dp"
+        android:padding="12dp"
+        android:background="@drawable/search_background"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:visibility="visible" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- RecyclerView for displaying places -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_edit_text"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Footer layout containing navigation buttons -->
+    <include
+        android:id="@+id/footer_buttons_include"
+        layout="@layout/footer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>
