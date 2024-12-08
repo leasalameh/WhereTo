@@ -30,6 +30,13 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
+        val logout: ImageButton = findViewById(R.id.logout_button)
+        logout.setOnClickListener {
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+        }
+
+
         // Initialize Views
         favoritesTab = findViewById(R.id.favorites_tab)
         beenTab = findViewById(R.id.been_tab)

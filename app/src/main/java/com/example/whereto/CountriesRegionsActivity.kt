@@ -22,6 +22,7 @@ class CountriesRegionsActivity : AppCompatActivity() {
     private lateinit var search: ImageButton
     private lateinit var home: ImageButton
     private lateinit var backArrow: ImageButton
+    private lateinit var profile: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +60,7 @@ class CountriesRegionsActivity : AppCompatActivity() {
         // Initialize footer buttons
         search = footerLayout.findViewById(R.id.search_button)
         home = footerLayout.findViewById(R.id.home_button)
+        profile = footerLayout.findViewById(R.id.profile_button)
 
         // Set OnClickListeners for the footer buttons
         search.setOnClickListener {
@@ -67,6 +69,10 @@ class CountriesRegionsActivity : AppCompatActivity() {
         }
         home.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+        profile.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
     }

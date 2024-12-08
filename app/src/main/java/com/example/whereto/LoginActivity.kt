@@ -41,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     if (auth.currentUser?.isEmailVerified == true) {
                         Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, CountriesRegionsActivity::class.java))
+                        startActivity(Intent(this, MainActivity::class.java))
                         finish()
                     } else {
                         Toast.makeText(this, "Please verify your email first.", Toast.LENGTH_LONG).show()
