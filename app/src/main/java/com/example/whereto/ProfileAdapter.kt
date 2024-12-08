@@ -1,24 +1,25 @@
 package com.example.whereto
 
-import Place
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ProfileAdapter(private val context: Context, private var places: List<Place>) : RecyclerView.Adapter<ProfileAdapter.PlaceViewHolder>() {
+class ProfileAdapter(private val context: Context, private var places: List<Place>) :
+    RecyclerView.Adapter<ProfileAdapter.PlaceViewHolder>() {
 
     // ViewHolder to hold each item view
     inner class PlaceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val nameTextView: TextView = itemView.findViewById(R.id.place_name)
-        val locationTextView: TextView = itemView.findViewById(R.id.place_location)
+        val nameTextView: TextView = itemView.findViewById(R.id.textPlace)
+        val imageImageView: ImageView = itemView.findViewById(R.id.imagePlace)
     }
 
     // Create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaceViewHolder {
-        val itemView = LayoutInflater.from(context).inflate(R.layout.item_place, parent, false)
+        val itemView = LayoutInflater.from(context).inflate(R.layout.item_searchplace, parent, false)
         return PlaceViewHolder(itemView)
     }
 
@@ -26,7 +27,7 @@ class ProfileAdapter(private val context: Context, private var places: List<Plac
     override fun onBindViewHolder(holder: PlaceViewHolder, position: Int) {
         val place = places[position]
         holder.nameTextView.text = place.name
-        holder.locationTextView.text = place.location
+        holder.imageImageView.setImageResource(place.imageRes)  // Set image using resource ID
     }
 
     // Return the size of the list
